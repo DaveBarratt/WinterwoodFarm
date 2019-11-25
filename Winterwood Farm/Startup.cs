@@ -43,7 +43,12 @@ namespace Winterwood_Farm
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    // Require authorization to access a folder of pages
+                    .AddRazorPagesOptions(options =>
+                    {           
+                        options.Conventions.AuthorizeFolder("/Batch");
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

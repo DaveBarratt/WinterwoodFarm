@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Winterwood_Farm.Models;
 
 namespace Winterwood_Farm.Data
 {
@@ -12,5 +13,7 @@ namespace Winterwood_Farm.Data
             : base(options)
         {
         }
+        public DbSet<Winterwood_Farm.Models.StockModel> StockModel { get; set; }
+        public DbSet<Winterwood_Farm.Models.BatchModel> BatchModel { get; set; }
     }
 }
