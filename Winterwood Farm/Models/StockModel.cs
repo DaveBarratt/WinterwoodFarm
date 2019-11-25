@@ -9,7 +9,7 @@ namespace Winterwood_Farm.Models
     public class StockModel
     {
         [Display(Name = "Stock Id")]
-        public int Id { get; set; }
+        public int StockModelId { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         [Required]

@@ -29,7 +29,7 @@ namespace Winterwood_Farm.Pages.Batch
                 return NotFound();
             }
 
-            BatchModel = await _context.BatchModel.FirstOrDefaultAsync(m => m.Id == id);
+            BatchModel = await _context.BatchModel.FirstOrDefaultAsync(m => m.BatchModelId == id);
 
             if (BatchModel == null)
             {

@@ -9,7 +9,7 @@ namespace Winterwood_Farm.Models
     public class BatchModel
     {
         [Display(Name = "Batch Id")]
-        public int Id { get; set; }
+        public int BatchModelId { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         [Required]

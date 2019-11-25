@@ -30,7 +30,7 @@ namespace Winterwood_Farm.Pages.Batch
                 return NotFound();
             }
 
-            BatchModel = await _context.BatchModel.FirstOrDefaultAsync(m => m.Id == id);
+            BatchModel = await _context.BatchModel.FirstOrDefaultAsync(m => m.BatchModelId == id);
 
             if (BatchModel == null)
             {
@@ -54,7 +54,7 @@ namespace Winterwood_Farm.Pages.Batch
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BatchModelExists(BatchModel.Id))
+                if (!BatchModelExists(BatchModel.BatchModelId))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace Winterwood_Farm.Pages.Batch
 
         private bool BatchModelExists(int id)
         {
-            return _context.BatchModel.Any(e => e.Id == id);
+            return _context.BatchModel.Any(e => e.BatchModelId == id);
         }
     }
 }
