@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Winterwood_Farm.Data;
 using Winterwood_Farm.Models;
 
-namespace Winterwood_Farm.Pages.Batch
+namespace Winterwood_Farm.Pages.Stock
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Winterwood_Farm.Pages.Batch
         }
 
         [BindProperty]
-        public BatchModel BatchModel { get; set; }
+        public StockModel StockModel { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -34,25 +34,7 @@ namespace Winterwood_Farm.Pages.Batch
                 return Page();
             }
 
-            _context.BatchModel.Add(BatchModel);
-
-            StockModel stock = _context.StockModel.FirstOrDefault(s =>
-                                s.Fruit == BatchModel.Fruit && s.Variety == BatchModel.Variety);
-            if (stock != null)
-            {
-                stock.Quantity += BatchModel.Quantity;
-            }
-            else
-            {
-                StockModel newStock = new StockModel
-                {
-                    Fruit = BatchModel.Fruit,
-                    Variety = BatchModel.Variety,
-                    Quantity = BatchModel.Quantity
-                };
-                _context.StockModel.Add(newStock);
-            }
-
+            _context.StockModel.Add(StockModel);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
