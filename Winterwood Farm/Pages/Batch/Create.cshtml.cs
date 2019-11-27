@@ -21,7 +21,6 @@ namespace Winterwood_Farm.Pages.Batch
 
         public IActionResult OnGet()
         {
-            int i = 0;
             return Page();
         }
 
