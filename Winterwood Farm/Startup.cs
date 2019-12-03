@@ -35,9 +35,12 @@ namespace Winterwood_Farm
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production" ? "MyDbConnection" : "DefaultConnection";
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("MyDbConnection")));
+                    Configuration.GetConnectionString(connectionString)));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

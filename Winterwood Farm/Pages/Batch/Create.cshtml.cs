@@ -36,7 +36,7 @@ namespace Winterwood_Farm.Pages.Batch
 
             _context.BatchModel.Add(BatchModel);
 
-            StockModel stock = _context.StockModel.FirstOrDefault(s =>
+            StockModel stock = _context.StockModel.FirstOrDefault(s => //s.FruitVarietyId == BatchModel.Fruit && s.Variety == BatchModel.Variety);
                                 s.Fruit == BatchModel.Fruit && s.Variety == BatchModel.Variety);
             if (stock != null)
             {
